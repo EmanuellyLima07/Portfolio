@@ -1,0 +1,538 @@
+/* ==========================================================================
+   1. RESET BÁSICO
+   ========================================================================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ==========================================================================
+   2. DESIGN TOKENS
+   ========================================================================== */
+:root {
+  /* Paleta base */
+  --color-cream: #efd9ce;
+  --color-lavender-light: #dec0f1;
+  --color-lavender: #b79ced;
+  --color-purple: #957fef;
+  --color-purple-deep: #7161ef;
+
+  /* Papéis semânticos */
+  --color-bg: #fffaf7;
+  --color-bg-alt: var(--color-cream);
+  --color-surface: #ffffff;
+  --color-text: #2c2438;
+  --color-text-muted: #5b526b;
+  --color-primary: var(--color-purple-deep);
+  --color-primary-hover: #5c4fd1;
+  --color-accent: var(--color-purple);
+  --color-border: var(--color-lavender);
+
+  /* Tipografia */
+  --font-base: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --fs-sm: 0.9rem;
+  --fs-base: 1rem;
+  --fs-md: 1.15rem;
+  --fs-lg: 1.5rem;
+  --fs-xl: 2rem;
+  --fs-xxl: 2.75rem;
+
+  /* Espaçamento */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2.5rem;
+  --space-xl: 4rem;
+
+  /* Bordas e sombras */
+  --radius: 12px;
+  --shadow-soft: 0 8px 24px rgba(113, 97, 239, 0.12);
+
+  /* Transições */
+  --transition-fast: 150ms ease;
+}
+
+/* ==========================================================================
+   3. BASE
+   ========================================================================== */
+body {
+  font-family: var(--font-base);
+  font-size: var(--fs-base);
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  line-height: 1.6;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--color-text);
+}
+
+.container {
+  width: min(1100px, 100% - 2 * var(--space-md));
+  margin-inline: auto;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: var(--space-sm);
+  background: var(--color-primary);
+  color: #fff;
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--radius);
+  z-index: 100;
+  transition: top var(--transition-fast);
+}
+
+.skip-link:focus {
+  top: var(--space-sm);
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-primary-hover);
+  outline-offset: 2px;
+}
+
+/* ==========================================================================
+   4. HEADER E NAVEGAÇÃO
+   ========================================================================== */
+.site-header {
+  position: sticky;
+  top: 0;
+  background-color: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+  z-index: 50;
+}
+
+.site-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: var(--space-sm);
+}
+
+.logo {
+  font-size: var(--fs-md);
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: var(--space-xs);
+}
+
+.nav-toggle__icon,
+.nav-toggle__icon::before,
+.nav-toggle__icon::after {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background-color: var(--color-text);
+  transition: transform var(--transition-fast);
+}
+
+.nav-toggle__icon::before,
+.nav-toggle__icon::after {
+  content: "";
+  position: relative;
+}
+
+.nav-toggle__icon::before {
+  top: 7px;
+}
+
+.nav-toggle__icon::after {
+  top: 3px;
+}
+
+.nav__list {
+  display: flex;
+  gap: var(--space-md);
+}
+
+.nav__link {
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  padding: var(--space-xs);
+  border-bottom: 2px solid transparent;
+  transition: border-color var(--transition-fast), color var(--transition-fast);
+}
+
+.nav__link:hover,
+.nav__link:focus-visible {
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+@media (max-width: 720px) {
+  .nav-toggle {
+    display: block;
+  }
+
+  .nav__list {
+    position: absolute;
+    inset-inline: 0;
+    top: 100%;
+    flex-direction: column;
+    gap: 0;
+    background-color: var(--color-surface);
+    border-bottom: 1px solid var(--color-border);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height var(--transition-fast);
+  }
+
+  .nav[data-open="true"] .nav__list {
+    max-height: 400px;
+  }
+
+  .nav__link {
+    display: block;
+    padding: var(--space-sm) var(--space-md);
+  }
+}
+
+/* ==========================================================================
+   5. HERO
+   ========================================================================== */
+.hero {
+  background: linear-gradient(160deg, var(--color-lavender-light) 0%, var(--color-bg) 60%);
+  padding-block: var(--space-xl);
+  text-align: center;
+}
+
+.hero__avatar {
+  border-radius: 50%;
+  margin-inline: auto;
+  margin-bottom: var(--space-md);
+  border: 4px solid var(--color-surface);
+  box-shadow: var(--shadow-soft);
+}
+
+.hero__name {
+  font-size: var(--fs-xxl);
+  letter-spacing: -0.01em;
+}
+
+.hero__role {
+  color: var(--color-primary);
+  font-weight: 600;
+  margin-top: var(--space-xs);
+}
+
+.hero__bio {
+  max-width: 60ch;
+  margin: var(--space-md) auto 0;
+  color: var(--color-text-muted);
+}
+
+.hero__actions {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-sm);
+  margin-top: var(--space-lg);
+  flex-wrap: wrap;
+}
+
+/* ==========================================================================
+   6. BOTÕES
+   ========================================================================== */
+.button {
+  display: inline-block;
+  background-color: var(--color-primary);
+  color: #fff;
+  font-weight: 600;
+  padding: var(--space-xs) var(--space-md);
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: background-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.button:hover,
+.button:focus-visible {
+  background-color: var(--color-primary-hover);
+  transform: translateY(-2px);
+}
+
+.button--secondary {
+  background-color: transparent;
+  color: var(--color-primary);
+  border: 2px solid var(--color-primary);
+}
+
+.button--secondary:hover,
+.button--secondary:focus-visible {
+  background-color: var(--color-primary);
+  color: #fff;
+}
+
+.button--small {
+  font-size: var(--fs-sm);
+  padding: var(--space-xs) var(--space-sm);
+}
+
+/* ==========================================================================
+   7. SEÇÕES GERAIS
+   ========================================================================== */
+.section {
+  padding-block: var(--space-xl);
+}
+
+.section--surface {
+  background-color: var(--color-bg-alt);
+}
+
+.section--card {
+  background-color: var(--color-surface);
+}
+
+.section__title {
+  font-size: var(--fs-xl);
+  margin-bottom: var(--space-md);
+}
+
+.section__title--accent {
+  position: relative;
+  padding-bottom: var(--space-xs);
+}
+
+.section__title--accent::after {
+  content: "";
+  display: block;
+  width: 48px;
+  height: 4px;
+  margin-top: var(--space-xs);
+  background-color: var(--color-accent);
+  border-radius: 2px;
+}
+
+.section__text {
+  max-width: 70ch;
+  color: var(--color-text-muted);
+}
+
+/* ==========================================================================
+   8. CARDS DE PROJETOS
+   ========================================================================== */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--space-md);
+  margin-top: var(--space-lg);
+}
+
+.card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: var(--space-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-soft);
+}
+
+.card__image {
+  border-radius: calc(var(--radius) - 4px);
+  margin-bottom: var(--space-xs);
+}
+
+.card__title {
+  font-size: var(--fs-md);
+}
+
+.card__text {
+  color: var(--color-text-muted);
+  flex-grow: 1;
+}
+
+.card .button--small {
+  align-self: flex-start;
+  margin-top: var(--space-xs);
+}
+
+/* ==========================================================================
+   9. FORMAÇÃO
+   ========================================================================== */
+.quali-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  margin-top: var(--space-lg);
+}
+
+.quali-item {
+  background-color: var(--color-surface);
+  border-left: 4px solid var(--color-primary);
+  border-radius: var(--radius);
+  padding: var(--space-md);
+}
+
+.quali-item__title {
+  font-size: var(--fs-md);
+}
+
+.quali-item__meta {
+  color: var(--color-primary);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  margin-block: var(--space-xs) var(--space-xs);
+}
+
+.quali-item__text {
+  color: var(--color-text-muted);
+}
+
+/* ==========================================================================
+   10. FORMULÁRIO DE CONTATO
+   ========================================================================== */
+.form {
+  max-width: 480px;
+  margin-top: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.form__field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.form__label {
+  font-weight: 600;
+  font-size: var(--fs-sm);
+}
+
+.form__input {
+  padding: var(--space-xs) var(--space-sm);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background-color: var(--color-surface);
+}
+
+.form__input:focus-visible {
+  border-color: var(--color-primary);
+}
+
+.form__input--textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.form__feedback {
+  color: var(--color-primary-hover);
+  font-weight: 600;
+  min-height: 1.2em;
+}
+
+/* ==========================================================================
+   11. RODAPÉ
+   ========================================================================== */
+.site-footer {
+  background-color: var(--color-text);
+  color: #fff;
+  padding-block: var(--space-lg);
+  text-align: center;
+}
+
+.social-list {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-sm);
+  margin-top: var(--space-sm);
+  flex-wrap: wrap;
+}
+
+.social-list .button--small {
+  background-color: transparent;
+  border: 1px solid var(--color-lavender-light);
+  color: #fff;
+}
+
+.social-list .button--small:hover,
+.social-list .button--small:focus-visible {
+  background-color: var(--color-lavender-light);
+  color: var(--color-text);
+}
+
+/* ==========================================================================
+   12. RESPONSIVIDADE GERAL
+   ========================================================================== */
+@media (max-width: 480px) {
+  .hero__name {
+    font-size: var(--fs-xl);
+  }
+
+  .hero__actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}

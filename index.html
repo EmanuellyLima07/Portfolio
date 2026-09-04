@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Emanuelly Araujo | Estudante de Sistemas de Informação</title>
+  <meta name="description" content="Portfólio acadêmico de Emanuelly Araujo, estudante de Sistemas de Informação com foco em Back-End (Java) e experiência prática em Front-End, bancos de dados e desenvolvimento web.">
+
+  <!-- Open Graph: opcional, útil para pré-visualização ao compartilhar o link -->
+  <meta property="og:title" content="Emanuelly Araujo | Estudante de Sistemas de Informação">
+  <meta property="og:description" content="Portfólio acadêmico com projetos de Front-End e Back-End, foco em Java e boas práticas de desenvolvimento.">
+  <meta property="og:type" content="website">
+
+  <!-- Favicon: opcional, adicione um arquivo real em assets/images/ -->
+  <!-- <link rel="icon" href="assets/images/favicon.ico"> -->
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <a class="skip-link" href="#conteudo-principal">Pular para o conteúdo principal</a>
+
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <p class="logo">Emanuelly Araujo</p>
+
+      <button
+        class="nav-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="menu-principal"
+      >
+        <span class="sr-only">Abrir menu</span>
+        <span class="nav-toggle__icon" aria-hidden="true"></span>
+      </button>
+
+      <nav class="nav" aria-label="Navegação principal">
+        <ul id="menu-principal" class="nav__list">
+          <li><a class="nav__link" href="#hero">Início</a></li>
+          <li><a class="nav__link" href="#sobre">Sobre</a></li>
+          <li><a class="nav__link" href="#projetos">Projetos</a></li>
+          <li><a class="nav__link" href="#formacao">Formação</a></li>
+          <li><a class="nav__link" href="#contato">Contato</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="conteudo-principal">
+
+    <!-- HERO -->
+    <section id="hero" class="hero">
+      <div class="container hero__content">
+        <img
+          class="hero__avatar"
+          src="https://placehold.co/130x130"
+          alt="Foto de perfil de Emanuelly Araujo"
+          width="130"
+          height="130"
+        >
+        <h1 class="hero__name">Emanuelly Araujo</h1>
+        <p class="hero__role">Estudante de Sistemas de Informação</p>
+        <p class="hero__bio">
+          Em formação em Sistemas de Informação, com maior interesse em Back-End
+          (especialmente Java) e experiência prática em Front-End com HTML, CSS,
+          JavaScript, além de Python, Flask e bancos de dados SQL/MySQL.
+          Este portfólio reúne projetos desenvolvidos ao longo da minha formação.
+        </p>
+        <div class="hero__actions">
+          <a class="button" href="#projetos">Ver projetos</a>
+          <a class="button button--secondary" href="assets/cv.pdf" download>Baixar CV</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SOBRE -->
+    <section id="sobre" class="section section--card">
+      <div class="container">
+        <h2 class="section__title">Sobre mim</h2>
+        <p class="section__text">
+          Sou estudante de Sistemas de Informação e estou construindo experiência prática
+          em desenvolvimento de software. Tenho maior afinidade com Back-End, principalmente
+          com Java, mas também venho desenvolvendo conhecimentos de Front-End para atuar de
+          forma mais completa. Uso este portfólio para documentar minha evolução técnica,
+          aplicando boas práticas de organização de código, versionamento com Git/GitHub e
+          atenção à acessibilidade e ao SEO.
+        </p>
+      </div>
+    </section>
+
+    <!-- PROJETOS -->
+    <section id="projetos" class="section">
+      <div class="container">
+        <h2 class="section__title section__title--accent">Projetos</h2>
+        <p class="section__text">
+          Os cards abaixo são modelos de apresentação. Substitua o título, a imagem, a
+          descrição e o link de cada um pelos seus projetos reais, incluindo as tecnologias
+          utilizadas em cada um.
+        </p>
+
+        <ul class="card-grid">
+          <li class="card">
+            <img
+              class="card__image"
+              src="https://placehold.co/250x140"
+              alt="Substitua por uma captura de tela real do Projeto 1"
+              width="250"
+              height="140"
+            >
+            <h3 class="card__title">Nome do Projeto 1</h3>
+            <p class="card__text">
+              Descreva o problema que o projeto resolve e as tecnologias utilizadas
+              (ex.: Java, Spring, SQL).
+            </p>
+            <a class="button button--small" href="#" data-action="placeholder">Ver repositório no GitHub</a>
+          </li>
+
+          <li class="card">
+            <img
+              class="card__image"
+              src="https://placehold.co/250x140"
+              alt="Substitua por uma captura de tela real do Projeto 2"
+              width="250"
+              height="140"
+            >
+            <h3 class="card__title">Nome do Projeto 2</h3>
+            <p class="card__text">
+              Descreva o problema que o projeto resolve e as tecnologias utilizadas
+              (ex.: Python, Flask, MySQL).
+            </p>
+            <a class="button button--small" href="#" data-action="placeholder">Ver repositório no GitHub</a>
+          </li>
+
+          <li class="card">
+            <img
+              class="card__image"
+              src="https://placehold.co/250x140"
+              alt="Substitua por uma captura de tela real do Projeto 3"
+              width="250"
+              height="140"
+            >
+            <h3 class="card__title">Nome do Projeto 3</h3>
+            <p class="card__text">
+              Descreva o problema que o projeto resolve e as tecnologias utilizadas
+              (ex.: HTML, CSS, JavaScript, Angular).
+            </p>
+            <a class="button button--small" href="#" data-action="placeholder">Ver repositório no GitHub</a>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- FORMAÇÃO -->
+    <section id="formacao" class="section section--surface">
+      <div class="container">
+        <h2 class="section__title section__title--accent">Formação</h2>
+
+        <ul class="quali-list">
+          <li class="quali-item">
+            <h3 class="quali-item__title">Sistemas de Informação</h3>
+            <p class="quali-item__meta">Nome da instituição · Em andamento</p>
+            <p class="quali-item__text">
+              Graduação com contato prático em HTML, CSS, JavaScript, Angular, Ionic,
+              Node.js, Python, Flask, SQL e MySQL, com maior interesse em Back-End e Java.
+            </p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- CONTATO -->
+    <section id="contato" class="section">
+      <div class="container">
+        <h2 class="section__title">Fale comigo</h2>
+
+        <form class="form" novalidate>
+          <div class="form__field">
+            <label class="form__label" for="inputNome">Nome</label>
+            <input class="form__input" type="text" id="inputNome" name="nome" autocomplete="name" required>
+          </div>
+
+          <div class="form__field">
+            <label class="form__label" for="inputEmail">E-mail</label>
+            <input class="form__input" type="email" id="inputEmail" name="email" autocomplete="email" required>
+          </div>
+
+          <div class="form__field">
+            <label class="form__label" for="inputMsg">Mensagem</label>
+            <textarea class="form__input form__input--textarea" id="inputMsg" name="mensagem" required></textarea>
+          </div>
+
+          <button class="button" type="submit">Enviar</button>
+          <p class="form__feedback" data-form-feedback role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; <span id="anoAtual"></span> Emanuelly Araujo. Todos os direitos reservados.</p>
+      <ul class="social-list">
+        <li><a class="button button--small" href="https://github.com/EmanuellyLima07" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+        <li><a class="button button--small" href="https://www.linkedin.com/in/emanuelly--araujo/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="js/main.js" defer></script>
+</body>
+</html>
